@@ -1,6 +1,7 @@
 from django.db import models
 from django.shortcuts import render
 from django.views.generic import ListView
+from django.views.generic.base import View
 from .models import Project, Galery, Courses, Educations, Skill, MainContent
 
 
@@ -20,3 +21,4 @@ class IndexView(ListView):
             'educations': educations,
         }
         return super().get_context_data(**context)
+
