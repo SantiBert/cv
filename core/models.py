@@ -13,8 +13,8 @@ class MainContent(models.Model):
     phone = models.CharField(max_length=25)
     address = models.CharField(max_length=150, null=True, blank=True)
     github = models.URLField(null=True, blank=True)
-    cv = models.FileField(upload_to='cv/', default=None, null=True,
-                          blank=True, max_length=150)
+    cv = models.FileField(upload_to='cv/', default=None, null=True,blank=True, max_length=150)
+    description = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.fullName
