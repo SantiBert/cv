@@ -26,9 +26,12 @@ class IndexView(View):
 class GaleryView(View):
     def get(self, request, *args, **kwargs):
         try:
+            m = MainContent.objects.all()
+            santi = m[0]
             galery = Galery.objects.all()
             context = {
             "galery":galery,
+            'santi': santi,
             }
         except:
             context = {}
