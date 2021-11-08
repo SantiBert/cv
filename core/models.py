@@ -73,6 +73,7 @@ class Galery(models.Model):
     slug = AutoSlugField(populate_from='id', default=timezone.now)
     project = models.ForeignKey(Project, on_delete=models.PROTECT)
     created_date = models.DateTimeField(default=timezone.now)
+    destacted = models.BooleanField(default=False)
 
     def __str__(self):
         return (self.project.title + self.created_date)
