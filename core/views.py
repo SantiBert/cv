@@ -13,7 +13,6 @@ class IndexView(View):
         educations = Educations.objects.all()
         galery = Galery.objects.filter(destacted=True)
         try:
-            galery = Galery.objects.all()
             context = {
             "galery":galery,
             'santi': santi,
