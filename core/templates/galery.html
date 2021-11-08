@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h4 class="text-left"><i class="fas fa-tools fa-2x"></i> Mis Proyectos: </h4>
+
+<hr class="mt-2 mb-3">
+<!-- Porfolio Section -->
+<div class="row my-4">
+
+    {% for project in galery %}
+    <div class="col-md-4 p-4">
+        <div class="card bg-black card-project">
+            <img src="{{project.image.url }}" class="card-img-top" />
+        </div>
+    </div>
+    {% endfor %}
+    <a href="{% url 'galery' %}" class="btn btn-block btn-pimary" role="button">
+        Ver todos mis dubujos
+    </a>
+</div>
+{% endblock %}
