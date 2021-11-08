@@ -5,28 +5,25 @@ from django.views.generic.base import View
 from .models import Project, Galery, Courses, Educations, Skill, MainContent
 
 
-class IndexView(ListView):
-    template_name = 'index.html'
-    model = Project
-    context_object_name = 'projects'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
+class IndexView(View):
+    def get(self, request, *args, **kwargs):
+        m = MainContent.objects.all()
+        santi = m[0]
+        courses = Courses.objects.all()
+        educations = Educations.objects.all()
+        galery = Galery.objects.filter(destacted=True)
         try:
-            m = MainContent.objects.all()
-            santi = m[0]
-            courses = Courses.objects.all()
-            educations = Educations.objects.all()
-            galery = Galery.objects.filter(destacted=True)
+            galery = Galery.objects.all()
             context = {
-                'santi': santi,
-                'courses': courses,
-                'educations': educations,
-                'galery': galery
+            "galery":galery,
+            'santi': santi,
+            'courses': courses,
+            'educations': educations,
             }
         except:
             context = {}
-        return super().get_context_data(**context)
-
+        return render(request, 'index.html', context)
+    
 class GaleryView(View):
     def get(self, request, *args, **kwargs):
         try:
