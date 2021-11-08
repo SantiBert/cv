@@ -76,4 +76,4 @@ class Galery(models.Model):
     destacted = models.BooleanField(default=False)
 
     def __str__(self):
-        return (self.project.title + self.created_date)
+        return (self.project.title + str(self.created_date))
