@@ -22,3 +22,16 @@ class IndexView(ListView):
         }
         return super().get_context_data(**context)
 
+
+class GalleryView(View):
+    def get(self, request, slug, *args, **kwargs):
+        project = Project.objects.get(slug=slug)
+        galery = Galery.objects.filter(project=project)
+        m = MainContent.objects.all()
+        santi = m[0]
+        context = {
+            "project": project,
+            "galery": galery,
+            'santi': santi,
+        }
+        return render(request, 'galery.html', context)

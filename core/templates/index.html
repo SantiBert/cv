@@ -1,14 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% load i18n %}
+
+
 {% block content %}
+
+<form action="{% url 'set_language' %}" method="post">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}">
+    <select name="language">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+        <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+            {{ language.name_local }} ({{ language.code }})
+        </option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Go">
+</form>
 
 <header class="row bg-black">
     <div class="col-md-4">
         <img src="{% static './profile.jpeg' %}" alt="">
     </div>
 
-    <div class="col-md-8 my-auto p-4">
+    <div id="personal" class="col-md-8 my-auto p-4">
         <h1><strong>{{santi.fullName}}</strong></h1>
         <h3>{{santi.shorName}}</h3>
         <div class="container" style="padding: 25px;">
@@ -20,17 +39,20 @@
                 </div>
                 <div class="col-6">
                     <p>
-                        <i class="fas fa-phone-square-alt fa-lg"></i> Teléfono: {{santi.phone}}
+                        <i class="fas fa-phone-square-alt fa-lg"></i> {% translate 'Teléfono' %} :
+                        {{santi.phone}}
                     </p>
                 </div>
                 <div class="col-6">
                     <p>
-                        <i class="fas fa-home fa-lg"></i> Dirección: {{santi.address}}
+                        <i class="fas fa-home fa-lg"></i> {% blocktrans %}Dirección{% endblocktrans %} :
+                        {{santi.address}}
                     </p>
                 </div>
                 <div class="col-6">
                     <p>
-                        <i class="fas fa-globe fa-lg"></i> Nacionalidad: {{santi.nacionalty}}.
+                        <i class="fas fa-globe fa-lg"></i> {% blocktrans %}Nacionalidad{% endblocktrans %} :
+                        {{santi.nacionalty}}.
                     </p>
                 </div>
                 <div class="col-6">
@@ -42,13 +64,13 @@
             </div>
         </div>
 
-        <a class="btn btn-primary btn-lg rounded-0 my-3" href="#">Descargar CV</a>
+        <a class="btn btn-primary btn-lg rounded-0 my-3" href="#">{% blocktrans %}Descargar CV{% endblocktrans %}</a>
     </div>
 </header>
 
 <hr class="mt-2 mb-3">
 <div class="container">
-    <h4><i class="fas fa-graduation-cap fa-2x"></i> Educación: </h4>
+    <h4><i class="fas fa-graduation-cap fa-2x"></i>{% blocktrans %}Educación{% endblocktrans %} : </h4>
     <div class="row">
         {% for education in educations %}
         <div class="col-3">
@@ -67,13 +89,14 @@
 <!-- Porfolio Section -->
 <div class="row my-4">
 
-    <h4 class="text-left"><i class="fas fa-tools fa-2x"></i> Mis Proyectos: </h4>
+    <h4 class="text-center"><i class="fas fa-tools fa-2x"></i>{% blocktrans %}Mis Proyectos{% endblocktrans %} : </h4>
 
     {% for project in projects %}
     <div class="col-md-4 p-4">
         <div class="card bg-black card-project">
-            <img src="{{project.image.url }}" class="card-img-top" />
-
+            <a href="{% url 'galeryimageslist' project.slug %}">
+                <img src="{{project.image.url }}" class="card-img-top" />
+            </a>
             <div class="card-body ">
 
                 <h2>{{ project.title }}</h2>
@@ -84,6 +107,7 @@
                     the
                     Project</a>
                 {% endif %}
+                <a id="ver" href="{% url 'galeryimageslist' project.slug %}">{% blocktrans %}Ver{% endblocktrans %}</a>
             </div>
             <div class="card-footer text-center">
                 {% for skill in project.skils.all %}
@@ -97,14 +121,21 @@
     {% endfor %}
 </div>
 
+<hr class="mt-2 mb-3">
+
+<h4 class="text-center"><i class="fas fa-puzzle-piece fa-2x"></i>{% blocktrans %}Mis Habilidades{% endblocktrans %} :
+</h4>
+<br>
+
 <div class="row row-cols-1 row-cols-md-3 g-4">
+
     {% for course in courses %}
     <div class="col">
         <div class="card">
             <img src="{{course.image.url}}" class="card-img-top" alt="{{course.image.title}}">
             <div class="card-body">
                 <h5 class="card-title">{{course.title}}</h5>
-                <p class="card-text"><a href="{{course.url}}">Certificado</a></p>
+                <p class="card-text"><a href="{{course.url}}">{% blocktrans %}Certificado{% endblocktrans %}</a></p>
             </div>
         </div>
     </div>

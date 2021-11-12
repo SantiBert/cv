@@ -1,0 +1,17 @@
+{
+    "navbarNav": {
+        "projects": "Projectos",
+        "dowloadCV_nav": "Descargar CV"
+    },
+    "personal": {
+        "phone": "Phone",
+        "address": "Address",
+        "nationality": "Nationality",
+        "dowloadCV_data": "Download CV",
+        "education": "Education",
+        "myProjets": "My Projects",
+        "ver": "See",
+        "mySkills": "My Skills",
+        "certificate": "Certificate"
+    }
+}

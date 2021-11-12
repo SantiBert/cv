@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row my-4">
+
+    <h2 class="text-center"> {{project.title}} </h2>
+    <div class="text-center">
+        {% for skill in project.skils.all %}
+        <small class="text-muted">
+            <img src="{{skill.image}}" alt="{{skill.name}}">
+        </small>
+        {% endfor %}
+    </div>
+
+    {% for photo in galery %}
+    <div class="col-md-4 p-4">
+        <div class="card bg-black card-project">
+            <img src="{{photo.image.url }}" class="card-img-top" />
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}

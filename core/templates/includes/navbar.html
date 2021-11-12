@@ -1,3 +1,4 @@
+{% load static %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand fw-bold fst-italic" href="/">{{santi.fullName}}</a>
@@ -8,9 +9,23 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
+                    <div id="flags" class="flags">
+                        <div class="flags__item" data-language="es">
+                            <img src="{% static './es.svg' %}" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div id="flags" class="flags">
+                        <div class="flags__item" data-language="en">
+                            <img src="{% static './gb.svg' %}" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li id="projects" class="nav-item">
                     <a class="nav-link" href="/">Projectos</a>
                 </li>
-                <li class="nav-item d-flex aling-items-center">
+                <li id="dowloadCV_nav" class="nav-item d-flex aling-items-center">
                     <a class="btn btn-primary" href="#">Descargar CV</a>
                 </li>
             </ul>

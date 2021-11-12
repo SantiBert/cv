@@ -26,6 +26,22 @@
 
     </div>
 
+
+    {% block js %}
+    <script>
+        const flagsElement = document.getElementById("flags");
+
+        const changeLanguage = async language => {
+            const requestJson = await fetch(`{% static './languages/${language}.json' % }`)
+
+            const text = await requestJson.json()
+        }
+
+        flagsElement.addEventListener("click", (e) => {
+            changeLanguage(e.target.parentElement.dataset.language);
+        });
+    </script>
+    {% endblock %}
 </body>
 
 </html>
