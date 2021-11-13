@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load i18n %}
+
+
+{% block content %}
+
+<a href="{% url 'index' %}" role="button" class="btn btn-primary">Volver al Portafolio</a>
+
+<div class="row my-4">
+
+    <h4 class="text-center"><i class="fas fa-tools fa-2x"></i> Todos mis Proyectos: </h4>
+
+    {% for project in projects %}
+    <div class="col-md-4 p-4">
+        <div class="card bg-black card-project">
+            <a href="{% url 'galeryimageslist' project.slug %}">
+                <img src="{{project.image.url }}" class="card-img-top" />
+            </a>
+            <div class="card-body ">
+
+                <h2>{{ project.title }}</h2>
+                <p>{{ project.description }}</p>
+
+                {% if project.url %}
+                <a href="{{project.url}}" class="btn btn-light rounded-0 btn-sm" target="__blank" rel="noreferrer">Ir a
+                    Proyecto</a>
+                {% endif %}
+                <a href="{% url 'galeryimageslist' project.slug %}">Ver</a>
+            </div>
+            <div class="card-footer text-center">
+                {% for skill in project.skils.all %}
+                <small class="text-muted">
+                    <img src="{{skill.image}}" alt="{{skill.name}}">
+                </small>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

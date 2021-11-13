@@ -6,7 +6,8 @@
 
 {% block content %}
 
-<form action="{% url 'set_language' %}" method="post">
+{% comment "lenguaje" %}
+<!--form action="{% url 'set_language' %}" method="post">
     {% csrf_token %}
     <input name="next" type="hidden" value="{{ redirect_to }}">
     <select name="language">
@@ -20,14 +21,14 @@
         {% endfor %}
     </select>
     <input type="submit" value="Go">
-</form>
-
+</form-->
+{% endcomment %}
 <header class="row bg-black">
     <div class="col-md-4">
         <img src="{% static './profile.jpeg' %}" alt="">
     </div>
 
-    <div id="personal" class="col-md-8 my-auto p-4">
+    <div class="col-md-8 my-auto p-4">
         <h1><strong>{{santi.fullName}}</strong></h1>
         <h3>{{santi.shorName}}</h3>
         <div class="container" style="padding: 25px;">
@@ -58,19 +59,19 @@
                 <div class="col-6">
                     <p id="github">
                         <i class="fab fa-github fa-lg"></i> Github:
-                        <a href=" {{santi.github}}"> {{santi.github}}</a>
+                        <a href=" {{santi.github}}" target="__blank"> {{santi.github}}</a>
                     </p>
                 </div>
             </div>
         </div>
 
-        <a class="btn btn-primary btn-lg rounded-0 my-3" {% if santi.cv %} href="/media/{{ santi.cv }}" {% endif %}>{% blocktrans %}Descargar CV{% endblocktrans %}</a>
+        <a class="btn btn-primary btn-lg rounded-0 my-3" target="_blank" {% if santi.cv %} href="/media/{{ santi.cv }}" {% endif %} download>{% blocktrans %}Descargar CV{% endblocktrans %}</a>
     </div>
 </header>
 
 <hr class="mt-2 mb-3">
 <div class="container">
-    <h4><i class="fas fa-graduation-cap fa-2x"></i>{% blocktrans %}Educación{% endblocktrans %} : </h4>
+    <h4><i class="fas fa-graduation-cap fa-2x"></i> {% blocktrans %}Educación{% endblocktrans %} : </h4>
     <div class="row">
         {% for education in educations %}
         <div class="col-3">
@@ -89,7 +90,7 @@
 <!-- Porfolio Section -->
 <div class="row my-4">
 
-    <h4 class="text-center"><i class="fas fa-tools fa-2x"></i>{% blocktrans %}Mis Proyectos{% endblocktrans %} : </h4>
+    <h4 class="text-center"><i class="fas fa-tools fa-2x"></i> {% blocktrans %} Mis Proyectos{% endblocktrans %} : </h4>
 
     {% for project in projects %}
     <div class="col-md-4 p-4">
@@ -123,7 +124,7 @@
 
 <hr class="mt-2 mb-3">
 
-<h4 class="text-center"><i class="fas fa-puzzle-piece fa-2x"></i>{% blocktrans %}Mis Habilidades{% endblocktrans %} :
+<h4 class="text-center"><i class="fas fa-puzzle-piece fa-2x"></i> {% blocktrans %} Mis Habilidades{% endblocktrans %} :
 </h4>
 <br>
 

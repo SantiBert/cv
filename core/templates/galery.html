@@ -3,6 +3,8 @@
 
 {% block content %}
 
+<a href="{% url 'index' %}" role="button" class="btn btn-primary">Volver al Portafolio</a>
+
 <div class="row my-4">
 
     <h2 class="text-center"> {{project.title}} </h2>
@@ -13,11 +15,13 @@
         </small>
         {% endfor %}
     </div>
-
+    <p class="text-center">{{ project.description }}</p>
     {% for photo in galery %}
     <div class="col-md-4 p-4">
         <div class="card bg-black card-project">
-            <img src="{{photo.image.url }}" class="card-img-top" />
+            <a href="{{photo.image.url }}" target="_blank">
+                <img src="{{photo.image.url }}" class="card-img-top" />
+            </a>
         </div>
     </div>
 

@@ -35,3 +35,17 @@ class GalleryView(View):
             'santi': santi,
         }
         return render(request, 'galery.html', context)
+
+
+class AllProjectsView(ListView):
+    template_name = 'allprojects.html'
+    model = Project
+    context_object_name = 'projects'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        m = MainContent.objects.all()
+        santi = m[0]
+        context = {
+            'santi': santi,
+        }
+        return super().get_context_data(**context)
