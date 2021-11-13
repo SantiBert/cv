@@ -1,4 +1,3 @@
-from types import ClassMethodDescriptorType
 from django.db import models
 from django.utils import timezone
 from autoslug import AutoSlugField

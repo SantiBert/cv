@@ -26,7 +26,8 @@
                     <a class="nav-link" href="/">Projectos</a>
                 </li>
                 <li id="dowloadCV_nav" class="nav-item d-flex aling-items-center">
-                    <a class="btn btn-primary" href="#">Descargar CV</a>
+                    <a class="btn btn-primary" {% if santi.cv %} href="/media/{{ santi.cv }}" {% endif %}>Descargar
+                        CV</a>
                 </li>
             </ul>
         </div>

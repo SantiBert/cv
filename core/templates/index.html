@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <a class="btn btn-primary btn-lg rounded-0 my-3" href="#">{% blocktrans %}Descargar CV{% endblocktrans %}</a>
+        <a class="btn btn-primary btn-lg rounded-0 my-3" {% if santi.cv %} href="/media/{{ santi.cv }}" {% endif %}>{% blocktrans %}Descargar CV{% endblocktrans %}</a>
     </div>
 </header>
 
