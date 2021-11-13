@@ -3,7 +3,22 @@
 
 {% block content %}
 
-<a href="{% url 'index' %}" role="button" class="btn btn-primary">Volver al Portafolio</a>
+<a href="{% url 'index' %}" role="button" class="btn btn-primary">
+    <i class="fas fa-arrow-left"></i>
+    Volver al Portafolio
+</a>
+{% if project.repo %}
+<a href="{{project.repo}}" role="button" class="btn btn-info">
+    <i class="fab fa-github fa-lg"></i>
+    Ir al repositorio
+</a>
+{% endif %}
+{% if project.url %}
+<a href="{{project.url}}" role="button" class="btn btn-danger">
+    <i class="fas fa-globe"></i>
+    Ir al sitio
+</a>
+{% endif %}
 
 <div class="row my-4">
 
