@@ -104,11 +104,12 @@
                 <p>{{ project.description }}</p>
 
                 {% if project.url %}
-                <a href="{{project.url}}" class="btn btn-light rounded-0 btn-sm" target="__blank" rel="noreferrer">Visit
-                    the
-                    Project</a>
+                <a href="{{project.url}}" class="btn rounded btn-sm" target="__blank" rel="noreferrer">Ir al sitio</a>
                 {% endif %}
-                <a id="ver" href="{% url 'galeryimageslist' project.slug %}">{% blocktrans %}Ver{% endblocktrans %}</a>
+                 {% if project.repo %}
+                <a href="{{project.repo}}" class="btn rounded btn-sm" target="__blank" rel="noreferrer">Ir al repositorio</a>
+                {% endif %}
+                <a href="{% url 'galeryimageslist' project.slug %}">{% blocktrans %}Ver{% endblocktrans %}</a>
             </div>
             <div class="card-footer text-center">
                 {% for skill in project.skils.all %}
