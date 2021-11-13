@@ -101,18 +101,18 @@
             <div class="card-body">
                 <h2>{{ project.title }}</h2>
                 <p>{{ project.description }}</p>
-                <ul  class="list-group">
+                <ul>
                     {% if project.url %}
-                    <li class="list-group-item">
+                    <li>
                      <a href="{{project.url}}" target="__blank" rel="noreferrer">Ir al sitio</a>
                     </li>
                      {% endif %}
                      {% if project.repo %}
-                    <li class="list-group-item">
+                    <li>
                      <a href="{{project.repo}}" target="__blank" rel="noreferrer">Ir al repositorio</a>
                     </li>
                     {% endif %}
-                    <li class="list-group-item">
+                    <li>
                      <a href="{% url 'galeryimageslist' project.slug %}">{% blocktrans %}Ver{% endblocktrans %}</a>
                     </li>
                 </ul>
