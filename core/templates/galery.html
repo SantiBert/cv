@@ -12,11 +12,22 @@
     <i class="fab fa-github fa-lg"></i>
     Ir al repositorio
 </a>
+{% else %}
+<a href="#" role="button" class="btn btn-info disabled">
+    <i class="fab fa-github fa-lg"></i>
+    Privado por petición del cliente
+</a>
 {% endif %}
+
 {% if project.url %}
 <a href="{{project.url}}" role="button" class="btn btn-danger">
     <i class="fas fa-globe"></i>
     Ir al sitio
+</a>
+{% else %}
+<a href="#" role="button" class="btn btn-danger disabled">
+    <i class="fas fa-globe"></i>
+    Privado por petición del cliente
 </a>
 {% endif %}
 

@@ -23,11 +23,34 @@
                 <h2>{{ project.title }}</h2>
                 <p>{{ project.description }}</p>
 
-                {% if project.url %}
-                <a href="{{project.url}}" class="btn btn-light rounded-0 btn-sm" target="__blank" rel="noreferrer">Ir a
-                    Proyecto</a>
-                {% endif %}
-                <a href="{% url 'galeryimageslist' project.slug %}">Ver</a>
+
+                <ul>
+                    {% if project.url %}
+                    <li>
+                        <a href="{{project.url}}" role="button" class="btn btn-primary btn-sm m-2" target="__blank"
+                            rel="noreferrer">
+                            <i class="fas fa-globe"></i>
+                            Ir aProyecto
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if project.repo %}
+                    <li>
+                        <a href="{{project.repo}}" role="button" class="btn btn-info btn-sm m-2" target="__blank"
+                            rel="noreferrer">
+                            <i class="fab fa-github fa-lg"></i>
+                            Ir al repositorio
+                        </a>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a href="{% url 'galeryimageslist' project.slug %}" role="button"
+                            class="btn btn-danger btn-sm m-2">
+                            <i class="fas fa-arrow-right"></i>
+                            Ver
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div class="card-footer text-center">
                 {% for skill in project.skils.all %}
