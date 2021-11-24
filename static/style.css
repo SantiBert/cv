@@ -7,6 +7,10 @@ body {
     background: rgb(0,3,54);
     background: linear-gradient(123deg, rgba(0,3,54,1) 45%, rgba(10,68,121,1) 86%);
   }
+
+  nav{
+    background: #000;
+  }
   
   .bg-black {
     background: #000;
