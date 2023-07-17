@@ -62,6 +62,7 @@ class Project(models.Model):
     url = models.URLField(null=True, blank=True)
     skils = models.ManyToManyField(Skill, null=True, blank=True)
     repo = models.URLField(null=True, blank=True)
+    show_in_index = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
