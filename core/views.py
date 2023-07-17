@@ -62,13 +62,15 @@ class IndexAPIView(GenericAPIView):
             santi = MainContent.objects.all().first()
             courses = Courses.objects.all()
             educations = Educations.objects.all()
-            projects = Project.objects.filter(is_active=True)
+            projects = Project.objects.filter(is_active=True,show_in_index=True)
+            skills = Skill.objects.all()
             
             data = {
                 'santi': MainContentSerializer(santi).data,
                 'courses': CoursesSerializer(courses, many=True).data,
                 'educations': EducationsSerializer(educations, many=True).data,
-                'projects': ProjectSmallSerializer(projects, many=True).data
+                'projects': ProjectSmallSerializer(projects, many=True).data,
+                'skills':SkillSerializer(skills, many=True).data
             }
             return Response({"data": data}, status=200)
         except Exception as e:
