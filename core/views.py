@@ -59,8 +59,7 @@ class AllProjectsView(ListView):
 class IndexAPIView(GenericAPIView):
      def get(self, request):
         try:
-            m = MainContent.objects.all()
-            santi = m[0]
+            santi = MainContent.objects.all().first()
             courses = Courses.objects.all()
             educations = Educations.objects.all()
             projects = Project.objects.filter(is_active=True)
