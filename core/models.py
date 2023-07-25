@@ -86,8 +86,9 @@ class Experience(models.Model):
     title = models.CharField(max_length=150)
     start_at = models.DateField(default=timezone.now)
     end_at = models.DateField(default=timezone.now)
+    is_actuale = models.BooleanField(default=False)
     description = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return (self.project.title + str(self.created_date))
+        return self.title
